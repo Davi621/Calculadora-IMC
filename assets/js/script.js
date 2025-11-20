@@ -7,16 +7,23 @@ form.addEventListener('submit', function(event) {
     const height = parseFloat(document.getElementById('height').value);
     
     // Verifica se os valores são válidos
-    if (!weight || !height || weight <= 0 || height <= 0) {
-        alert('Por favor, insira valores válidos!');
-        return;
-    }
+   if (weight <= 0 || height <= 0) {
+    alert('Valores devem ser positivos!');
+    return;
+}
     
     // Calcula o IMC (altura deve estar em metros)
-    const bmi = (weight / (height * height)).toFixed(2);
-    
-    const value = document.getElementById('value');
-    let description = '';
+   function calculateBMI(weight, height) {
+    return (weight / (height * height)).toFixed(2);
+}
+
+function getBMIClassification(bmi) {
+    // Lógica de classificação
+}
+
+// No evento submit:
+const bmi = calculateBMI(weight, height);
+const classification = getBMIClassification(bmi);
     
     // Remove a classe 'hidden' para mostrar o resultado
     document.getElementById('infos').classList.remove('hidden');
